@@ -5,13 +5,12 @@
 [ext_resource path="res://Assets/Sounds/gb-jam-song1.mp3" type="AudioStream" id=3]
 
 [node name="MainGame" type="Node2D"]
-
-[node name="ScrollingBackground" parent="." instance=ExtResource( 1 )]
+position = Vector2( 16, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 25, 21 )
-velocity_max = -3
-velocity_min = 3.0
+position = Vector2( 30, 32 )
+
+[node name="ScrollingBackground" parent="." instance=ExtResource( 1 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

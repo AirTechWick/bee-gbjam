@@ -121,7 +121,7 @@ margin_bottom = 20.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite"]
 position = Vector2( 16, -16 )
 frames = SubResource( 1 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Label" type="Label" parent="."]
