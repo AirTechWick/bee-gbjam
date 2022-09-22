@@ -1,0 +1,144 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/GB jam/plussize-bee-sheet.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/MainMenuScript.gd" type="Script" id=2]
+[ext_resource path="res://Assets/GB jam/sky-n-ground.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/DotGothic16-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/GB jam/gameBG.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=5]
+extra_spacing_char = 1
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 5 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/pixel_font = SubResource( 5 )
+Label/styles/normal = null
+
+[sub_resource type="Animation" id=6]
+resource_name = "MenuAnimations"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.458824, 0.372549, 0.611765, 1 ), Color( 1, 1, 1, 0 ), Color( 0.458824, 0.372549, 0.611765, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/AnimatedSprite:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 20 ), Vector2( 16, -16 ), Vector2( 16, 20 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -16 ) ]
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_right = 160.0
+margin_bottom = 144.0
+texture = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.409
+anchor_right = 0.5
+anchor_bottom = 0.555
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite"]
+position = Vector2( 16, -16 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.458824, 0.372549, 0.611765, 1 )
+anchor_left = 0.5
+anchor_top = 0.7
+anchor_right = 0.5
+anchor_bottom = 0.7
+margin_left = -79.0
+margin_top = -12.0
+margin_right = 79.0
+margin_bottom = 12.0
+theme = SubResource( 2 )
+text = "press A to start"
+align = 1
+
+[node name="MenuAnimation" type="AnimationPlayer" parent="."]
+autoplay = "MenuAnimations"
+anims/MenuAnimations = SubResource( 6 )
+anims/RESET = SubResource( 7 )
