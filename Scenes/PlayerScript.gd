@@ -18,7 +18,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	apply_velocity_y()
-	self.position.y = clamp(self.position.y, 10,135)
+	self.position.y = clamp(self.position.y, 10,115)
 
 		
 func apply_velocity_y():

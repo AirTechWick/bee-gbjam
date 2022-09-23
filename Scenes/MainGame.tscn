@@ -1,18 +1,275 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://Scenes/ScrollingBackground.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Seed.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/ParallaxBackgroundScript.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sounds/gb-jam-song1.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/PlayerScript.gd" type="Script" id=4]
+[ext_resource path="res://Assets/GB jam/sky-n-ground.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GB jam/gameBG.png" type="Texture" id=6]
+[ext_resource path="res://Assets/GB jam/Bee-Sprite-Sheet.png" type="Texture" id=7]
+[ext_resource path="res://Assets/GB jam/btm-enemy-body-sheet.png" type="Texture" id=8]
+[ext_resource path="res://Assets/GB jam/btm-enemy-stem-sheet.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/EnemySpikeScript.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/FloorScript.gd" type="Script" id=11]
+[ext_resource path="res://icon.png" type="Texture" id=12]
+[ext_resource path="res://Assets/GB jam/Plant2-sprite-Sheet.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Sprout1Script.gd" type="Script" id=14]
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 18, 22 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 19, 0, 18, 22 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 38, 0, 18, 22 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 57, 0, 18, 22 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 76, 0, 18, 22 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.8333, 31.6667 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 18, 9 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 4, 5.5 )
+
+[sub_resource type="Animation" id=17]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BranchCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, -15.5 ), Vector2( 1, -28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BranchSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 0 ), Vector2( 2, -25 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BranchCollision:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 3 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BranchCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, -16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BranchSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BranchCollision:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [node name="MainGame" type="Node2D"]
 position = Vector2( 16, 1 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 30, 32 )
+[node name="Sprout1" type="Node2D" parent="."]
+position = Vector2( 2, 116 )
+script = ExtResource( 14 )
 
-[node name="ScrollingBackground" parent="." instance=ExtResource( 1 )]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sprout1"]
+frames = SubResource( 6 )
+
+[node name="Floor" type="Node2D" parent="."]
+visible = false
+position = Vector2( 55, 131 )
+scale = Vector2( 3, 0.3 )
+script = ExtResource( 11 )
+
+[node name="Sprite" type="Sprite" parent="Floor"]
+texture = ExtResource( 12 )
+
+[node name="Area2D" type="Area2D" parent="Floor"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Area2D"]
+position = Vector2( -0.166664, -1.66666 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 30, 32 )
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="Seed" parent="Player" instance=ExtResource( 1 )]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 8 )
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 9 )
+
+[node name="EnemySpike" type="Area2D" parent="."]
+position = Vector2( 165, 114 )
+collision_layer = 2
+script = ExtResource( 10 )
+
+[node name="BranchCooldown" type="Timer" parent="EnemySpike"]
+wait_time = 6.0
+autostart = true
+
+[node name="PlantCollision" type="CollisionShape2D" parent="EnemySpike"]
+shape = SubResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="EnemySpike/PlantCollision"]
+texture = ExtResource( 8 )
+
+[node name="BranchCollision" type="CollisionShape2D" parent="EnemySpike"]
+position = Vector2( 2, -16 )
+shape = SubResource( 16 )
+
+[node name="BranchSprite" type="Sprite" parent="EnemySpike"]
+position = Vector2( 2, 0 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemySpike"]
+autoplay = "Default"
+anims/Default = SubResource( 17 )
+anims/RESET = SubResource( 10 )
+
+[node name="LightBG" type="ParallaxBackground" parent="."]
+layer = -1
+script = ExtResource( 2 )
+scroll_speed = 50
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="LightBG"]
+motion_mirroring = Vector2( 160, 0 )
+
+[node name="Sprite" type="Sprite" parent="LightBG/ParallaxLayer"]
+position = Vector2( 80, 73 )
+texture = ExtResource( 6 )
+
+[node name="Vines&FloorBG" type="ParallaxBackground" parent="."]
+layer = 0
+script = ExtResource( 2 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Vines&FloorBG"]
+motion_mirroring = Vector2( 160, 0 )
+
+[node name="Sprite" type="Sprite" parent="Vines&FloorBG/ParallaxLayer"]
+position = Vector2( 80, 73 )
+z_index = 1000
+texture = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 pitch_scale = 0.85
 autoplay = true
+
+[connection signal="area_shape_entered" from="Floor/Area2D" to="Floor" method="_on_Area2D_area_shape_entered"]
+[connection signal="body_entered" from="EnemySpike" to="EnemySpike" method="_on_EnemySpike_body_entered"]
+[connection signal="timeout" from="EnemySpike/BranchCooldown" to="EnemySpike" method="_on_BranchCooldown_timeout"]
+
+[editable path="Player/Seed"]

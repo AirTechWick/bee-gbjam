@@ -29,7 +29,7 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( -9, 19 ), Vector2( -12, 29 ), Vector2( -13, 37 ), Vector2( -14, 46 ), Vector2( -14, 63 ), Vector2( -14, 83 ), Vector2( -14, 103 ), Vector2( -14, 123 ), Vector2( -14, 143 ) ]
 }
 tracks/2/type = "value"
@@ -109,6 +109,8 @@ tracks/3/keys = {
 }
 
 [node name="Seed" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 17, 23 )
@@ -120,5 +122,6 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Fall"
+playback_speed = 2.0
 anims/Fall = SubResource( 2 )
 anims/RESET = SubResource( 3 )
