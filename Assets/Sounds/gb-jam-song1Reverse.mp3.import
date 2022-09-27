@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gb-jam-song1Reverse.mp3-1180877a11f54521b73563d786ac3212.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/gb-jam-song1Reverse.mp3"
+dest_files=[ "res://.import/gb-jam-song1Reverse.mp3-1180877a11f54521b73563d786ac3212.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

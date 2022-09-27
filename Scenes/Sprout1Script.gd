@@ -4,7 +4,7 @@ export var speed = 1
 
 
 func _ready():
-	self.position.x = 2
+	self.position.x = 30
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -13,4 +13,5 @@ func _process(delta):
 	# Reset the position and Stop animation
 	if self.position.x <= -40:
 		$AnimatedSprite.stop()
-		self.position.x = 2
+		$AnimatedSprite.frame = 0
+		self.position.x = 30
